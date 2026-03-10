@@ -8,7 +8,7 @@ namespace Linq_Concepts
     {
         public void PerformLinqOperations(List<Game> games)
         {
-            if(games == null || games.Count == 0)
+            if (games == null || games.Count == 0)
             {
                 Console.WriteLine("No games available to perform LINQ operations.");
                 return;
@@ -32,21 +32,49 @@ namespace Linq_Concepts
             //}
 
             //Example of a LINQ query to group games by genre
-            var gamesByGenre = games.OrderBy(g => g.ReleaseYear)
-                .GroupBy(g => g.Genre)
-                .OrderByDescending(g => g.Count());
-            Console.WriteLine("Games Grouped by Genre");
-            Console.WriteLine(@"------------------");
-            foreach (var game in gamesByGenre)
-            {
-                Console.WriteLine(game.Key);
-                Console.WriteLine(@"------------------");
-                foreach (var g in game)
-                {
-                    Console.WriteLine($"  {g.Name} - {g.Rating} - {g.ReleaseYear}");
-                }
-            }
+            //var gamesByGenre = games.OrderBy(g => g.ReleaseYear)
+            //    .GroupBy(g => g.Genre)
+            //    .OrderByDescending(g => g.Count());
+            //Console.WriteLine("Games Grouped by Genre");
+            //Console.WriteLine(@"------------------");
+            //foreach (var game in gamesByGenre)
+            //{
+            //    Console.WriteLine(game.Key);
+            //    Console.WriteLine(@"------------------");
+            //    foreach (var g in game)
+            //    {
+            //        Console.WriteLine($"  {g.Name} - {g.Rating} - {g.ReleaseYear}");
+            //    }
+            //}
 
+            //Average price and rating of games released after 2015
+            //var gamesByGenre = games.Where(g => g.ReleaseYear > 2015)
+            //    .GroupBy(g => g.Genre)
+            //    .OrderByDescending(g => g.Count());
+            //Console.WriteLine("Games Grouped by Genre");
+            //Console.WriteLine(@"------------------");
+            //foreach (var game in gamesByGenre)
+            //{
+            //    Console.WriteLine(game.Key);
+            //    Console.WriteLine(@"------------------");
+
+            //    // Calculate averages for the group (price and rating)
+            //    var avgPrice = game.Average(g => g.Price);
+            //    var avgRating = game.Average(g => g.Rating);
+            //    Console.WriteLine($"  Average Price: {avgPrice:F2}, Average Rating: {avgRating:F2}");
+
+            //}
+
+            // Example of a LINQ query to find the top 3 most expensive games
+
+            var topExpensiveGames = games.OrderByDescending(g => g.Price)
+                .Take(3);
+
+            foreach (var game in topExpensiveGames)
+            {
+                Console.WriteLine($"{game.Name} - {game.Price}"); 
+
+            }
         }
     }
 }
