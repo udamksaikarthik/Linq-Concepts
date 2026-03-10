@@ -67,14 +67,24 @@ namespace Linq_Concepts
 
             // Example of a LINQ query to find the top 3 most expensive games
 
-            var topExpensiveGames = games.OrderByDescending(g => g.Price)
-                .Take(3);
+            //var topExpensiveGames = games.OrderByDescending(g => g.Price)
+            //    .Take(3);
 
-            foreach (var game in topExpensiveGames)
-            {
-                Console.WriteLine($"{game.Name} - {game.Price}"); 
+            //foreach (var game in topExpensiveGames)
+            //{
+            //    Console.WriteLine($"{game.Name} - {game.Price}"); 
 
-            }
+            //}
+
+            // Example of a Linq Query to show games that can only played on ps4
+
+            //var switchExclusiveGames = games.Where(g => g.Platforms.Contains("PS4") && g.Platforms.Count == 1);
+
+            //foreach (var game in switchExclusiveGames)
+            //{
+            //    Console.WriteLine($"{game.Name} - {string.Join(", ", game.Platforms)}");
+
+            //}
         }
     }
 }
